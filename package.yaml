@@ -76,4 +76,11 @@ executables:
     - devtools
 
 tests:
-  devtools-test: *devtools
+  test:
+    main: test/Test.hs
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - devtools

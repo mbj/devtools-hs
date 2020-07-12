@@ -4,7 +4,7 @@ cabal-version: 1.18
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 353e800bec8f8bcf8c2e723523e5571ffebdd3522b4c6ec7ea7de99fc71c20ee
+-- hash: 25c929da8ca0ac27b201615a8b42d13be5ccccd07ae426d2b8eda8cacd3fe2a7
 
 name:           devtools
 version:        0.0.2
@@ -48,6 +48,7 @@ library
     , base >4.12 && <4.14
     , bytestring >=0.10 && <0.11
     , cmdargs >=0.10.20 && <0.11
+    , extra
     , filepath >=1.4 && <1.5
     , hlint >3.1 && <4
     , mprelude >=0.1.0 && <0.2
@@ -74,6 +75,7 @@ executable devtools
     , bytestring >=0.10 && <0.11
     , cmdargs >=0.10.20 && <0.11
     , devtools
+    , extra
     , filepath >=1.4 && <1.5
     , hlint >3.1 && <4
     , mprelude >=0.1.0 && <0.2
@@ -88,9 +90,9 @@ executable devtools
     ghc-options: -Wwarn
   default-language: Haskell2010
 
-test-suite devtools-test
+test-suite test
   type: exitcode-stdio-1.0
-  main-is: app/Main.hs
+  main-is: test/Test.hs
   other-modules:
       Paths_devtools
   default-extensions: DerivingStrategies LambdaCase NoImplicitPrelude OverloadedStrings RecordWildCards StrictData
@@ -101,6 +103,7 @@ test-suite devtools-test
     , bytestring >=0.10 && <0.11
     , cmdargs >=0.10.20 && <0.11
     , devtools
+    , extra
     , filepath >=1.4 && <1.5
     , hlint >3.1 && <4
     , mprelude >=0.1.0 && <0.2

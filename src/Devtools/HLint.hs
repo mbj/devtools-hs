@@ -1,12 +1,7 @@
 module Devtools.HLint (testTree) where
 
-import Control.Applicative (empty, pure)
-import Data.Function (($), (.), const)
-import Data.Functor (void)
-import Data.Semigroup ((<>))
-import Data.String (String)
 import Data.Typeable (Typeable)
-import System.IO
+import Devtools.Prelude
 
 import qualified Data.Foldable                      as Foldable
 import qualified Language.Haskell.HLint             as HLint

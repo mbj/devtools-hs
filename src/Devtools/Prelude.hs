@@ -1,3 +1,8 @@
-module Devtools.Prelude (module Exports) where
+module Devtools.Prelude
+  ( module Exports
+  ) where
 
-import MPrelude as Exports
+import Control.Monad       as Exports
+import Control.Monad.Extra as Exports (unlessM)
+import Data.Functor        as Exports ((<&>))
+import MPrelude            as Exports

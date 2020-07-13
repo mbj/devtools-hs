@@ -1,28 +1,26 @@
 module Devtools.Brittany
   ( Brittany.Config
   , testTree
-  ) where
+  )
+where
 
-import  Control.Monad.Trans.Maybe (runMaybeT)
-import  Data.Coerce
-import  Data.Functor.Identity (Identity(..))
-import  Data.Semigroup
-import  Devtools.Prelude
-import  Language.Haskell.Brittany (BrittanyError(..))
-import  Test.Tasty.MGolden (goldenTest)
+import           Control.Monad.Trans.Maybe      ( runMaybeT )
+import           Data.Coerce
+import           Data.Functor.Identity          ( Identity(..) )
+import           Data.Semigroup
+import           Devtools.Prelude
+import           Language.Haskell.Brittany      ( BrittanyError(..) )
+import           Test.Tasty.MGolden             ( goldenTest )
 
-import qualified Data.List                 as List
-import qualified Data.Text.IO              as Text
-import qualified Language.Haskell.Brittany as Brittany
-import qualified System.Path               as Path
-import qualified System.Path.Directory     as Path
-import qualified Test.Tasty                as Tasty
+import qualified Data.List                     as List
+import qualified Data.Text.IO                  as Text
+import qualified Language.Haskell.Brittany     as Brittany
+import qualified System.Path                   as Path
+import qualified System.Path.Directory         as Path
+import qualified Test.Tasty                    as Tasty
 
 testTree
-  :: Maybe Path.RelFile
-  -> [Path.RelFile]
-  -> [Path.RelFile]
-  -> IO Tasty.TestTree
+  :: Maybe Path.RelFile -> [Path.RelFile] -> [Path.RelFile] -> IO Tasty.TestTree
 testTree userConfigFile files filesToIgnore = do
   selectedConfig <- maybe (pure defaultConfig) getUserConfig userConfigFile
 
@@ -60,10 +58,7 @@ defaultConfig = Brittany.staticDefaultConfig
 
   additionalExtensions :: [String]
   additionalExtensions =
-    [ "-XExplicitNamespaces"
-    , "-XPatternSynonyms"
-    , "-XNumericUnderscores"
-    ]
+    ["-XExplicitNamespaces", "-XPatternSynonyms", "-XNumericUnderscores"]
 
   syntaxExtensions :: Identity [String]
   syntaxExtensions = (additionalExtensions <>)

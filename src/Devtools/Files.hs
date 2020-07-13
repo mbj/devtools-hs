@@ -3,12 +3,12 @@ module Devtools.Files
   )
 where
 
-import Devtools.Prelude
-import System.Path ((</>))
+import           Devtools.Prelude
+import           System.Path                    ( (</>) )
 
-import qualified Data.List             as List
-import qualified System.Path           as Path
-import qualified System.Path.Directory as Path
+import qualified Data.List                     as List
+import qualified System.Path                   as Path
+import qualified System.Path.Directory         as Path
 
 findHaskellFiles :: [Path.RelDir] -> IO [Path.RelFile]
 findHaskellFiles = fmap List.concat . traverse findFilesRecursive

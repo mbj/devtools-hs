@@ -1,0 +1,1 @@
+["src/Devtools.hs","src/Devtools/Brittany.hs","src/Devtools/Dependencies.hs","src/Devtools/Files.hs","src/Devtools/HLint.hs","src/Devtools/Prelude.hs"]

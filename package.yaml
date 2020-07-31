@@ -12,15 +12,18 @@ description: |
 dependencies:
 - Diff               > 0.3 && < 0.5
 - base               > 4.12 && < 4.14
+- brittany           ^>= 0.12
 - bytestring         ^>= 0.10
 - cmdargs            ^>= 0.10.20
-- filepath           ^>= 1.4
+- extra
 - hlint              > 3.1 && < 4
 - mprelude           ^>= 0.1.0
+- pathtype
 - source-constraints ^>= 0.0.1
 - tasty              ^>= 1.3.1
 - tasty-mgolden      ^>= 0.0.1
 - text               ^>= 1.2
+- transformers       ^>= 0.5
 - typed-process      ^>= 0.2
 
 flags:
@@ -42,6 +45,7 @@ default-extensions:
 - OverloadedStrings
 - RecordWildCards
 - StrictData
+- ViewPatterns
 
 ghc-options:
 - -Wall
@@ -76,4 +80,11 @@ executables:
     - devtools
 
 tests:
-  devtools-test: *devtools
+  test:
+    main: test/Test.hs
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - devtools

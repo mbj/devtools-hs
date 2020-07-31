@@ -36,4 +36,4 @@ jobs:
     - name: Build
       run: stack build --fast --test --no-run-tests
     - name: Run tests
-      run: stack build --fast --test
+      run: stack build --fast --test --test-arguments='--hide-successes'

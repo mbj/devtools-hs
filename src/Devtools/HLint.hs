@@ -1,19 +1,19 @@
-module Devtools.HLint (testTree) where
+module Devtools.HLint
+  ( testTree
+  )
+where
 
-import Control.Applicative (empty, pure)
-import Data.Function (($), (.), const)
-import Data.Functor (void)
-import Data.Semigroup ((<>))
-import Data.String (String)
-import Data.Typeable (Typeable)
-import System.IO
+import           Data.Typeable                  ( Typeable )
+import           Devtools.Prelude
 
-import qualified Data.Foldable                      as Foldable
-import qualified Language.Haskell.HLint             as HLint
-import qualified System.Console.CmdArgs.Verbosity   as CmdArgs
-import qualified Test.Tasty                         as Tasty
-import qualified Test.Tasty.Providers               as Tasty
-import qualified Test.Tasty.Providers.ConsoleFormat as Tasty
+import qualified Data.Foldable                 as Foldable
+import qualified Language.Haskell.HLint        as HLint
+import qualified System.Console.CmdArgs.Verbosity
+                                               as CmdArgs
+import qualified Test.Tasty                    as Tasty
+import qualified Test.Tasty.Providers          as Tasty
+import qualified Test.Tasty.Providers.ConsoleFormat
+                                               as Tasty
 
 newtype HLintTest = HLintTest [String]
   deriving stock Typeable
@@ -31,7 +31,8 @@ runHLintTest arguments = do
 
   pure $ if Foldable.null ideas
     then Tasty.testPassed empty
-    else Tasty.testFailedDetails empty
+    else
+      Tasty.testFailedDetails empty
       . Tasty.ResultDetailsPrinter
       . const
       . const
